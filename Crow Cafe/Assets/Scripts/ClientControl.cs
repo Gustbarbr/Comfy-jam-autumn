@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ClientControl : MonoBehaviour
 {
+    PlayerControl player;
+
     [Header("Spawn)")]
     public List<Transform> spawn;
     private bool alreadySpawned = false;
@@ -18,6 +20,8 @@ public class ClientControl : MonoBehaviour
 
     void Start()
     {
+        player = FindObjectOfType<PlayerControl>();
+
         if(alreadySpawned == false)
         {
             List<Transform> availableSpawns = new List<Transform>();
@@ -47,5 +51,13 @@ public class ClientControl : MonoBehaviour
             chosenFood.transform.position = foodRequestPosition;
             alreadyRequested = true;
         }
+    }
+
+    private void Update()
+    {
+        if(player.transform.position.x > transform.position.x)
+            transform.localScale = new Vector2(1,1);
+        else if (player.transform.position.x < transform.position.x)
+            transform.localScale = new Vector2(-1, 1);
     }
 }

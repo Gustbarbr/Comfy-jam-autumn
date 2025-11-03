@@ -7,6 +7,12 @@ public class PlayerControl : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb;
+    public List<Transform> items;
+
+    [Header("Items)")]
+    public int coffeeBeans = 0;
+    public int bread = 0;
+    public int milk = 0;
 
     private void Start()
     {
@@ -16,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        PickUpItems();
     }
 
     public void PlayerMovement()
@@ -23,6 +30,30 @@ public class PlayerControl : MonoBehaviour
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         float verticalMovement = Input.GetAxisRaw("Vertical");
 
+        if (horizontalMovement > 0)
+            transform.localScale = new Vector2(1, 1);
+        if (horizontalMovement < 0)
+            transform.localScale = new Vector2(-1, 1);
+
         rb.velocity = new Vector2(horizontalMovement * speed, verticalMovement * speed);
+    }
+
+    public void PickUpItems()
+    {
+        foreach (Transform i in items)
+        {
+            if(i != null)
+                if(Vector2.Distance(transform.position, i.position) < 0.5f)
+                    if (Input.GetKeyDown(KeyCode.E) && i.gameObject.activeSelf == true)
+                    {
+                        if(i.name == "Coffee Beans")
+                            coffeeBeans++;
+                        if (i.name == "Bread")
+                            bread++;
+                        if (i.name == "Milk")
+                            milk++;
+                        i.gameObject.SetActive(false);
+                    }
+        }
     }
 }
