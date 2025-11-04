@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     public int coffeeBeans = 0;
     public int bread = 0;
     public int milk = 0;
+    public int cake = 0;
 
     private void Start()
     {
@@ -52,6 +53,8 @@ public class PlayerControl : MonoBehaviour
                             bread++;
                         if (i.name == "Milk")
                             milk++;
+                        if (i.name == "Cake")
+                            cake++;
                         i.gameObject.SetActive(false);
                     }
         }
