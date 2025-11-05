@@ -8,12 +8,15 @@ public class PlayerControl : MonoBehaviour
     public float speed;
     private Rigidbody2D rb;
     public List<Transform> items;
+    public GameObject cookMenu;
 
     [Header("Items)")]
     public int coffeeBeans = 0;
     public int bread = 0;
     public int milk = 0;
-    public int cake = 0;
+    public int sugar = 0;
+    public int flour = 0;
+    public int egg = 0;
 
     private void Start()
     {
@@ -24,6 +27,10 @@ public class PlayerControl : MonoBehaviour
     {
         PlayerMovement();
         PickUpItems();
+        if (Input.GetKeyDown(KeyCode.Tab))
+            cookMenu.SetActive(true);
+        else if (Input.GetKeyUp(KeyCode.Tab))
+            cookMenu.SetActive(false);
     }
 
     public void PlayerMovement()
@@ -53,8 +60,12 @@ public class PlayerControl : MonoBehaviour
                             bread++;
                         if (i.name == "Milk")
                             milk++;
-                        if (i.name == "Cake")
-                            cake++;
+                        if (i.name == "Sugar")
+                            sugar++;
+                        if (i.name == "Flour")
+                            flour++;
+                        if (i.name == "Egg")
+                            egg++;
                         i.gameObject.SetActive(false);
                     }
         }
