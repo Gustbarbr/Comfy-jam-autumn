@@ -9,14 +9,22 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb;
     public List<Transform> items;
     public GameObject cookMenu;
+    public bool canMove = true;
 
-    [Header("Items)")]
+    [Header("Items")]
+    public int coins = 0;
     public int coffeeBeans = 0;
     public int bread = 0;
     public int milk = 0;
     public int sugar = 0;
     public int flour = 0;
     public int egg = 0;
+
+    public int breadWithEgg = 0;
+    public int cake = 0;
+    public int coffeeAndMilk = 0;
+    public int glassWithMilk = 0;
+    public int glassWithCoffee = 0;
 
     private void Start()
     {
@@ -25,16 +33,30 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         PlayerMovement();
         PickUpItems();
+
         if (Input.GetKeyDown(KeyCode.Tab))
             cookMenu.SetActive(true);
         else if (Input.GetKeyUp(KeyCode.Tab))
             cookMenu.SetActive(false);
     }
 
+
     public void PlayerMovement()
     {
+        if (!canMove)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         float verticalMovement = Input.GetAxisRaw("Vertical");
 
@@ -45,6 +67,7 @@ public class PlayerControl : MonoBehaviour
 
         rb.velocity = new Vector2(horizontalMovement * speed, verticalMovement * speed);
     }
+
 
     public void PickUpItems()
     {
