@@ -15,7 +15,7 @@ public class CookingBenchControl : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(player.transform.position, transform.position) <= 0.4f)
+        if (Vector2.Distance(player.transform.position, transform.position) <= 4f)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {

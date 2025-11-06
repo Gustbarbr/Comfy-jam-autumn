@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using TMPro;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -26,6 +27,14 @@ public class PlayerControl : MonoBehaviour
     public int glassWithMilk = 0;
     public int glassWithCoffee = 0;
 
+    [Header("UI Texts")]
+    public TMP_Text txtCoffeeBeans;
+    public TMP_Text txtBread;
+    public TMP_Text txtMilk;
+    public TMP_Text txtSugar;
+    public TMP_Text txtFlour;
+    public TMP_Text txtEgg;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,6 +50,7 @@ public class PlayerControl : MonoBehaviour
 
         PlayerMovement();
         PickUpItems();
+        UpdateInventoryUI();
 
         if (Input.GetKeyDown(KeyCode.Tab))
             cookMenu.SetActive(true);
@@ -74,7 +84,7 @@ public class PlayerControl : MonoBehaviour
         foreach (Transform i in items)
         {
             if(i != null)
-                if(Vector2.Distance(transform.position, i.position) < 0.5f)
+                if(Vector2.Distance(transform.position, i.position) <= 2f)
                     if (Input.GetKeyDown(KeyCode.E) && i.gameObject.activeSelf == true)
                     {
                         if(i.name == "Coffee Beans")
@@ -93,4 +103,16 @@ public class PlayerControl : MonoBehaviour
                     }
         }
     }
+
+
+    public void UpdateInventoryUI()
+    {
+        if (txtCoffeeBeans != null) txtCoffeeBeans.text = coffeeBeans.ToString();
+        if (txtBread != null) txtBread.text = bread.ToString();
+        if (txtMilk != null) txtMilk.text = milk.ToString();
+        if (txtSugar != null) txtSugar.text = sugar.ToString();
+        if (txtFlour != null) txtFlour.text = flour.ToString();
+        if (txtEgg != null) txtEgg.text = egg.ToString();
+    }
+
 }

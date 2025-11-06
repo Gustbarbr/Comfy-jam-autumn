@@ -9,6 +9,7 @@ public class CookPotControl : MonoBehaviour
 
     private PlayerControl playerControl;
     private bool isOpen = false;
+    public BoxCollider2D cookBenchCollider;
 
     public List<string> currentIngredients = new List<string>();
 
@@ -40,6 +41,7 @@ public class CookPotControl : MonoBehaviour
         cookPotUI.SetActive(true);
         isOpen = true;
         playerControl.canMove = false;
+        cookBenchCollider.enabled = false;
     }
 
     public void CloseCookPot()
@@ -47,6 +49,7 @@ public class CookPotControl : MonoBehaviour
         cookPotUI.SetActive(false);
         isOpen = false;
         playerControl.canMove = true;
+        cookBenchCollider.enabled = true;
     }
 
 
@@ -62,10 +65,15 @@ public class CookPotControl : MonoBehaviour
 
         currentIngredients.Add(ingredient);
 
+        if (playerControl != null) playerControl.UpdateInventoryUI();
+
         bool hasPossibleRecipe = recipes.Keys.Any(r => currentIngredients.All(i => r.Contains(i)));
 
         if (!hasPossibleRecipe)
+        {
             currentIngredients.Clear();
+            if (playerControl != null) playerControl.UpdateInventoryUI();
+        }
     }
 
     public void ConfirmMix()
@@ -80,12 +88,16 @@ public class CookPotControl : MonoBehaviour
                 string result = recipe.Value;
                 GiveToPlayer(result);
                 currentIngredients.Clear();
+                if (playerControl != null) playerControl.UpdateInventoryUI();
                 return;
             }
         }
+
         ReturnIngredientsToInventory();
         currentIngredients.Clear();
+        if (playerControl != null) playerControl.UpdateInventoryUI();
     }
+
 
     private void ReturnIngredientsToInventory()
     {

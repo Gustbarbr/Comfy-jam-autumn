@@ -16,7 +16,7 @@ public class BellControl : MonoBehaviour
 
     private void Update()
     {
-        if(Vector2.Distance(player.transform.position, transform.position) < 0.4f)
+        if(Vector2.Distance(player.transform.position, transform.position) <= 2f)
             if(Input.GetKeyDown(KeyCode.E))
                 if(actualIngredients.Count > 0)
                 {
