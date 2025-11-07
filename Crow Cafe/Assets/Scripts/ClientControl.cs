@@ -61,7 +61,7 @@ public class ClientControl : MonoBehaviour
         else if (player.transform.position.x < transform.position.x)
             transform.localScale = new Vector2(-1, 1);
 
-        if (!orderDelivered && Vector2.Distance(player.transform.position, transform.position) < 0.6f)
+        if (!orderDelivered && Vector2.Distance(player.transform.position, transform.position) < 2f)
         {
             if (Input.GetKeyDown(KeyCode.E))
                 TryDeliverOrder();
@@ -127,7 +127,7 @@ public class ClientControl : MonoBehaviour
 
         if (delivered)
         {
-            player.coins += goldReward;
+            player.coins = Mathf.Min(player.coins + goldReward, 99);
             orderDelivered = true;
             chosenFood.SetActive(false);
 

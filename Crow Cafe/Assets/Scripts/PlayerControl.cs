@@ -28,12 +28,20 @@ public class PlayerControl : MonoBehaviour
     public int glassWithCoffee = 0;
 
     [Header("UI Texts")]
+    public TMP_Text txtCoins;
+
     public TMP_Text txtCoffeeBeans;
     public TMP_Text txtBread;
     public TMP_Text txtMilk;
     public TMP_Text txtSugar;
     public TMP_Text txtFlour;
     public TMP_Text txtEgg;
+
+    public TMP_Text txtCake;
+    public TMP_Text txtCoffeeWithMilk;
+    public TMP_Text txtBreadWithEgg;
+    public TMP_Text txtGlassOfMilk;
+    public TMP_Text txtGlassOfCoffee;
 
     private void Start()
     {
@@ -107,12 +115,20 @@ public class PlayerControl : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
-        if (txtCoffeeBeans != null) txtCoffeeBeans.text = coffeeBeans.ToString();
-        if (txtBread != null) txtBread.text = bread.ToString();
-        if (txtMilk != null) txtMilk.text = milk.ToString();
-        if (txtSugar != null) txtSugar.text = sugar.ToString();
-        if (txtFlour != null) txtFlour.text = flour.ToString();
-        if (txtEgg != null) txtEgg.text = egg.ToString();
+        if (txtCoins != null) txtCoins.text = "x" + coins.ToString();
+
+        if (txtCoffeeBeans != null) txtCoffeeBeans.text = "x" + coffeeBeans.ToString();
+        if (txtBread != null) txtBread.text = "x" + bread.ToString();
+        if (txtMilk != null) txtMilk.text = "x" + milk.ToString();
+        if (txtSugar != null) txtSugar.text = "x" + sugar.ToString();
+        if (txtFlour != null) txtFlour.text = "x" + flour.ToString();
+        if (txtEgg != null) txtEgg.text = "x" + egg.ToString();
+
+        if (txtCake != null) txtCake.text = "x" + cake.ToString();
+        if (txtCoffeeWithMilk != null) txtCoffeeWithMilk.text = "x" + coffeeAndMilk.ToString();
+        if (txtBreadWithEgg != null) txtBreadWithEgg.text = "x" + breadWithEgg.ToString();
+        if (txtGlassOfMilk != null) txtGlassOfMilk.text = "x" + glassWithMilk.ToString();
+        if (txtGlassOfCoffee != null) txtGlassOfCoffee.text = "x" + glassWithCoffee.ToString();
     }
 
 }

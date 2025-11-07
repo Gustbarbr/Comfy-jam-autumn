@@ -71,10 +71,13 @@ public class CookPotControl : MonoBehaviour
 
         if (!hasPossibleRecipe)
         {
+            ReturnIngredientsToInventory();
             currentIngredients.Clear();
+
             if (playerControl != null) playerControl.UpdateInventoryUI();
         }
     }
+
 
     public void ConfirmMix()
     {
@@ -88,15 +91,16 @@ public class CookPotControl : MonoBehaviour
                 string result = recipe.Value;
                 GiveToPlayer(result);
                 currentIngredients.Clear();
-                if (playerControl != null) playerControl.UpdateInventoryUI();
+                playerControl.UpdateInventoryUI();
                 return;
             }
         }
 
         ReturnIngredientsToInventory();
         currentIngredients.Clear();
-        if (playerControl != null) playerControl.UpdateInventoryUI();
+        playerControl.UpdateInventoryUI();
     }
+
 
 
     private void ReturnIngredientsToInventory()
