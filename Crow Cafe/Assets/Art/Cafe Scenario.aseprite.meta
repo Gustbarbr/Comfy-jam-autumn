@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c394504bc805945429f41e6512465df5
+guid: 931419abc90698d419f115dbabb69706
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Cafe Floor
+  - name: Cafe Scenario
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.6666667, y: -0.6}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 176
-      height: 112
-    spriteID: fdc6f14b206726a41bd2abd400899f27
+      width: 96
+      height: 80
+    spriteID: 600e8aa46fc5bce42b933fcd8f2fc88d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,21 +144,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1424191425
-    name: Cafe Floor
+    guid: -1746003249
+    name: Cafe Scenario
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Cafe Floor
+    - name: Cafe Scenario
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 176
-        height: 112
-      spriteId: fdc6f14b206726a41bd2abd400899f27
+        y: 48
+        width: 96
+        height: 80
+      spriteId: 600e8aa46fc5bce42b933fcd8f2fc88d
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -177,4 +177,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 176, y: 112}
+  canvasSize: {x: 128, y: 128}
