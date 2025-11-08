@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     public List<Transform> items;
     public GameObject cookMenu;
     public bool canMove = true;
+    public Transform dormSpawnPoint;
 
     [Header("Items")]
     public int coins = 0;
@@ -45,6 +47,10 @@ public class PlayerControl : MonoBehaviour
 
     private void Start()
     {
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        if(currentScene.name == "Dorm")
+            transform.position = dormSpawnPoint.transform.position;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -92,7 +98,7 @@ public class PlayerControl : MonoBehaviour
         foreach (Transform i in items)
         {
             if(i != null)
-                if(Vector2.Distance(transform.position, i.position) <= 2f)
+                if(Vector2.Distance(transform.position, i.position) <= 1.5f)
                     if (Input.GetKeyDown(KeyCode.E) && i.gameObject.activeSelf == true)
                     {
                         if(i.name == "Coffee Beans")

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ed5d5569f867c104ca41d4bffe570a75
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - inventory: {instanceID: 0}
+  - currentItem: {instanceID: 0}
+  - validMat: {fileID: 2100000, guid: d142321bc9e168c45b8bc2cedf4cf114, type: 2}
+  - invalidMat: {fileID: 2100000, guid: 9be3d45059e89bf43aa7be3cdeba32a2, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

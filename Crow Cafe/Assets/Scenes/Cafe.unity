@@ -13395,6 +13395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292024903}
   - component: {fileID: 292024904}
+  - component: {fileID: 292024905}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -13428,6 +13429,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 076bc093433cca1478d62ef4a2d9296e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &292024905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292024902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c0ee54ed7b75c4e8430206a2589616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &295842567
@@ -15926,6 +15939,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16064,6 +16078,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 715111703}
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c0ee54ed7b75c4e8430206a2589616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &524614221
 GameObject:
   m_ObjectHideFlags: 0
@@ -16649,6 +16675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619394802}
   - component: {fileID: 619394801}
+  - component: {fileID: 619394803}
   m_Layer: 0
   m_Name: Global Light 2D
   m_TagString: Untagged
@@ -16721,6 +16748,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1749239280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619394803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619394800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c0ee54ed7b75c4e8430206a2589616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &621129545
 GameObject:
   m_ObjectHideFlags: 0
@@ -17344,6 +17383,8 @@ GameObject:
   - component: {fileID: 715111706}
   - component: {fileID: 715111705}
   - component: {fileID: 715111704}
+  - component: {fileID: 715111707}
+  - component: {fileID: 715111708}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Untagged
@@ -17440,6 +17481,7 @@ MonoBehaviour:
   - {fileID: 1668527792}
   cookMenu: {fileID: 1084966303}
   canMove: 1
+  dormSpawnPoint: {fileID: 2006798716}
   coins: 0
   coffeeBeans: 0
   bread: 0
@@ -17526,6 +17568,31 @@ CapsuleCollider2D:
   m_Offset: {x: 0.004472375, y: -0.12000427}
   m_Size: {x: 0.51514554, y: 0.5533784}
   m_Direction: 0
+--- !u!114 &715111707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715111701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c0ee54ed7b75c4e8430206a2589616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &715111708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715111701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2203628ca3e3b4696909082695454e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []
 --- !u!1 &719291296
 GameObject:
   m_ObjectHideFlags: 0
@@ -31319,6 +31386,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2006798715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006798716}
+  - component: {fileID: 2006798717}
+  m_Layer: 0
+  m_Name: Dorm Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006798716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006798715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2006798717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006798715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c0ee54ed7b75c4e8430206a2589616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2010803501
 GameObject:
   m_ObjectHideFlags: 0
@@ -32086,6 +32197,7 @@ SceneRoots:
   - {fileID: 1749239280}
   - {fileID: 519420032}
   - {fileID: 1227720446}
+  - {fileID: 2006798716}
   - {fileID: 1573719658}
   - {fileID: 715111703}
   - {fileID: 1962397722}
