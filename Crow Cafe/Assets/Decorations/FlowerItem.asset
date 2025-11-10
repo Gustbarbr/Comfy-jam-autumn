@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FlowerItem
   m_EditorClassIdentifier: 
   itemName: Flower
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 490acc371a3b3b64798b08649fffdf82, type: 3}
   prefab: {fileID: 7833812522961498268, guid: e5012eeca51f0d441bffbda60fba7f14, type: 3}
   price: 15

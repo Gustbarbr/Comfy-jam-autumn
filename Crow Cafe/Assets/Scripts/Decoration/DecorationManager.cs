@@ -94,9 +94,7 @@ public class DecorationManager : MonoBehaviour
 
         Collider2D[] hits = Physics2D.OverlapBoxAll(
             col.bounds.center,
-            col.bounds.size * 0.9f,
-            0,
-            obstacleMask
+            col.bounds.size * 0.9f,0,obstacleMask
         );
 
         return hits.Length == 0;

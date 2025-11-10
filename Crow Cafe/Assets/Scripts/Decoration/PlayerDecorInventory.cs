@@ -39,4 +39,5 @@ public class PlayerDecorInventory : MonoBehaviour
         var found = inventory.Find(i => i.item == item);
         if (found != null && found.placed > 0) found.placed--;
     }
+
 }
