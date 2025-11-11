@@ -43,20 +43,22 @@ public class DecorationManager : MonoBehaviour
     public void EnterDecorationMode(DecorationItem item)
     {
         if (inventory == null || player == null)
-        {
             return;
-        }
 
         if (inventory.CanPlace(item))
         {
             currentItem = item;
             isDecorating = true;
-            player.canMove = false;
 
             ghost = Instantiate(item.prefab);
             SetGhostMaterial(validMat);
+
+            Collider2D ghostCollider = ghost.GetComponent<Collider2D>();
+            if (ghostCollider != null)
+                ghostCollider.enabled = false;
         }
     }
+
 
     public void ExitDecorationMode()
     {
@@ -85,29 +87,65 @@ public class DecorationManager : MonoBehaviour
             PlaceDecoration();
 
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            player.coins += currentItem.price;
             ExitDecorationMode();
+        }
     }
     private bool CanPlaceHere()
     {
+        if (ghost == null) return false;
+
         Collider2D col = ghost.GetComponent<Collider2D>();
-        if (col == null) return true;
+        if (col == null) return false;
 
         Collider2D[] hits = Physics2D.OverlapBoxAll(
             col.bounds.center,
-            col.bounds.size * 0.9f,0,obstacleMask
+            col.bounds.size * 0.9f,
+            0,
+            obstacleMask
         );
 
-        return hits.Length == 0;
+        if (hits.Length > 0)
+            return false;
+
+        Collider2D placementArea = null;
+        Collider2D[] allAreas = Physics2D.OverlapBoxAll(
+            col.bounds.center,
+            col.bounds.size * 0.9f,
+            0,
+            LayerMask.GetMask("PlacementArea")
+        );
+
+        if (allAreas.Length == 0)
+            return false;
+
+        placementArea = allAreas[0];
+        Bounds areaBounds = placementArea.bounds;
+        Bounds ghostBounds = col.bounds;
+
+        if (!areaBounds.Contains(ghostBounds.min) || !areaBounds.Contains(ghostBounds.max))
+            return false;
+
+        return true;
     }
+
+
     private void PlaceDecoration()
     {
         GameObject placed = Instantiate(currentItem.prefab, ghost.transform.position, ghost.transform.rotation);
         placed.tag = "Decoration";
+
+        Collider2D placedCollider = placed.GetComponent<Collider2D>();
+        if (placedCollider != null)
+            placedCollider.enabled = true;
+
         placed.AddComponent<DecorationObject>().item = currentItem;
 
         inventory.MarkPlaced(currentItem);
         ExitDecorationMode();
     }
+
 
     private void SetGhostMaterial(Material mat)
     {

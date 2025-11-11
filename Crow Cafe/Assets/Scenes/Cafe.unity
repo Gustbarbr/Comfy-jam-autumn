@@ -15757,7 +15757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockText: {fileID: 173842222}
-  remainingTime: 300
+  remainingTime: 1
 --- !u!1 &475968700
 GameObject:
   m_ObjectHideFlags: 0
@@ -17482,7 +17482,7 @@ MonoBehaviour:
   cookMenu: {fileID: 1084966303}
   canMove: 1
   dormSpawnPoint: {fileID: 2006798716}
-  coins: 0
+  coins: 15
   coffeeBeans: 0
   bread: 0
   milk: 0
