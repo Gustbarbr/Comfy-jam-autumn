@@ -56,9 +56,9 @@ public class ClientControl : MonoBehaviour
     {
         if (player == null) return;
 
-        if (player.transform.position.x > transform.position.x)
+        if (chosenSpawn.name == "Spawn C" || chosenSpawn.name == "Spawn D" || chosenSpawn.name == "Spawn G" || chosenSpawn.name == "Spawn H" || chosenSpawn.name == "Spawn K" || chosenSpawn.name == "Spawn L")
             transform.localScale = new Vector2(1, 1);
-        else if (player.transform.position.x < transform.position.x)
+        else if (chosenSpawn.name == "Spawn A" || chosenSpawn.name == "Spawn B" || chosenSpawn.name == "Spawn E" || chosenSpawn.name == "Spawn F" || chosenSpawn.name == "Spawn I" || chosenSpawn.name == "Spawn J")
             transform.localScale = new Vector2(-1, 1);
 
         if (!orderDelivered && Vector2.Distance(player.transform.position, transform.position) < 2f)
