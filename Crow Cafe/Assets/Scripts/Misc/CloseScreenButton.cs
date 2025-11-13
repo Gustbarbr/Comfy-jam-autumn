@@ -14,7 +14,9 @@ public class CloseScreenButton : MonoBehaviour
 
     public void CloseScreen()
     {
-        player.canMove = true;
+        if(player != null) 
+            player.canMove = true;
+
         screenToClose.SetActive(false);
     }
 }

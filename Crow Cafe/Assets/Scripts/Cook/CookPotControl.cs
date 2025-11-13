@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class CookPotControl : MonoBehaviour
 {
     [Header("Cooking System UI")]
     public GameObject cookPotUI;
+    public TextMeshProUGUI producedFoodText;
 
     private PlayerControl playerControl;
     private bool isOpen = false;
@@ -50,6 +52,7 @@ public class CookPotControl : MonoBehaviour
         isOpen = false;
         playerControl.canMove = true;
         cookBenchCollider.enabled = true;
+        producedFoodText.text = "";
     }
 
 
@@ -90,6 +93,7 @@ public class CookPotControl : MonoBehaviour
             {
                 string result = recipe.Value;
                 GiveToPlayer(result);
+                producedFoodText.text = "You made " + result + "!";
                 currentIngredients.Clear();
                 playerControl.UpdateInventoryUI();
                 return;
