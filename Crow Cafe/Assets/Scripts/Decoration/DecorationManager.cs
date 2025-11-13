@@ -83,6 +83,20 @@ public class DecorationManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             ghost.transform.Rotate(0, 0, 90f);
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Vector3 scale = ghost.transform.localScale;
+            scale.x *= -1;
+            ghost.transform.localScale = scale;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Vector3 scale = ghost.transform.localScale;
+            scale.y *= -1;
+            ghost.transform.localScale = scale;
+        }
+
         if (Input.GetMouseButtonDown(0) && canPlace)
             PlaceDecoration();
 
@@ -92,6 +106,8 @@ public class DecorationManager : MonoBehaviour
             ExitDecorationMode();
         }
     }
+
+
     private bool CanPlaceHere()
     {
         if (ghost == null) return false;
@@ -134,6 +150,9 @@ public class DecorationManager : MonoBehaviour
     private void PlaceDecoration()
     {
         GameObject placed = Instantiate(currentItem.prefab, ghost.transform.position, ghost.transform.rotation);
+
+        placed.transform.localScale = ghost.transform.localScale;
+
         placed.tag = "Decoration";
 
         Collider2D placedCollider = placed.GetComponent<Collider2D>();
@@ -145,6 +164,7 @@ public class DecorationManager : MonoBehaviour
         inventory.MarkPlaced(currentItem);
         ExitDecorationMode();
     }
+
 
 
     private void SetGhostMaterial(Material mat)

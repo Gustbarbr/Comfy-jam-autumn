@@ -66,10 +66,14 @@ public class PlayerControl : MonoBehaviour
         PickUpItems();
         UpdateInventoryUI();
 
-        if (Input.GetKeyDown(KeyCode.Tab))
-            cookMenu.SetActive(true);
-        else if (Input.GetKeyUp(KeyCode.Tab))
-            cookMenu.SetActive(false);
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Cafe")
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+                cookMenu.SetActive(true);
+            else if (Input.GetKeyUp(KeyCode.Tab))
+                cookMenu.SetActive(false);
+        }
     }
 
 

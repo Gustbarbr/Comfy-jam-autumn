@@ -127,7 +127,7 @@ public class ClientControl : MonoBehaviour
 
         if (delivered)
         {
-            player.coins = Mathf.Min(player.coins + goldReward, 99);
+            player.coins = Mathf.Min(player.coins + goldReward, 999);
             orderDelivered = true;
             chosenFood.SetActive(false);
 

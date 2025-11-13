@@ -15757,7 +15757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockText: {fileID: 173842222}
-  remainingTime: 1
+  remainingTime: 300
 --- !u!1 &475968700
 GameObject:
   m_ObjectHideFlags: 0
