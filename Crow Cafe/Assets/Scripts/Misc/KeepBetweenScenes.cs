@@ -1,11 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KeepBetweenScenes : MonoBehaviour
 {
-    void Start()
+    private static HashSet<string> existingObjects = new HashSet<string>();
+
+    void Awake()
     {
-        DontDestroyOnLoad(this);
+        string id = gameObject.name + "_" + gameObject.GetType().ToString();
+
+        if (existingObjects.Contains(id))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        existingObjects.Add(id);
+        DontDestroyOnLoad(gameObject);
     }
 }

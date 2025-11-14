@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
+    private static PlayerControl instance;
+
     public float speed;
     private Rigidbody2D rb;
     public List<Transform> items;
@@ -45,13 +47,38 @@ public class PlayerControl : MonoBehaviour
     public TMP_Text txtGlassOfMilk;
     public TMP_Text txtGlassOfCoffee;
 
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
     private void Start()
     {
-
-        Scene currentScene = SceneManager.GetActiveScene();
-        if(currentScene.name == "Dorm")
-            transform.position = dormSpawnPoint.transform.position;
         rb = GetComponent<Rigidbody2D>();
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Dorm" && dormSpawnPoint != null)
+            transform.position = dormSpawnPoint.position;
     }
 
     void Update()
@@ -140,5 +167,79 @@ public class PlayerControl : MonoBehaviour
         if (txtGlassOfMilk != null) txtGlassOfMilk.text = "x" + glassWithMilk.ToString();
         if (txtGlassOfCoffee != null) txtGlassOfCoffee.text = "x" + glassWithCoffee.ToString();
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(RebuildSceneReferences());
+    }
+
+    private IEnumerator RebuildSceneReferences()
+    {
+        yield return null;
+
+        cookMenu = FindInactiveObjectByName("Cook Menu");
+
+        if (SceneManager.GetActiveScene().name == "Dorm")
+        {
+            GameObject spawnObj = GameObject.Find("DormSpawnPoint");
+            if (spawnObj != null)
+                dormSpawnPoint = spawnObj.transform;
+
+            transform.position = dormSpawnPoint.position;
+        }
+
+        items = new List<Transform>();
+
+        GameObject[] itensCena = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (GameObject obj in itensCena)
+        {
+            if (obj.CompareTag("Ingredient"))
+                items.Add(obj.transform);
+        }
+
+
+        txtCoins = FindComponentInScene<TMP_Text>("Coin Quantity Text");
+        txtCoffeeBeans = FindComponentInScene<TMP_Text>("Coffee Txt");
+        txtBread = FindComponentInScene<TMP_Text>("Bread Txt");
+        txtMilk = FindComponentInScene<TMP_Text>("Milk txt");
+        txtSugar = FindComponentInScene<TMP_Text>("Sugar Txt");
+        txtFlour = FindComponentInScene<TMP_Text>("Flour Txt");
+        txtEgg = FindComponentInScene<TMP_Text>("Egg Txt");
+
+        txtCake = FindComponentInScene<TMP_Text>("Cake Txt");
+        txtCoffeeWithMilk = FindComponentInScene<TMP_Text>("Milk and coffee Txt");
+        txtBreadWithEgg = FindComponentInScene<TMP_Text>("Bread with egg Txt");
+        txtGlassOfMilk = FindComponentInScene<TMP_Text>("Glass with milk Txt");
+        txtGlassOfCoffee = FindComponentInScene<TMP_Text>("Glass with coffee Txt");
+
+    }
+
+    private GameObject FindInactiveObjectByName(string name)
+    {
+        var allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (var obj in allObjects)
+        {
+            if (obj.name == name && obj.scene.IsValid())
+                return obj;
+        }
+
+        return null;
+    }
+
+    private T FindComponentInScene<T>(string objectName) where T : Component
+    {
+        T[] allComponents = Resources.FindObjectsOfTypeAll<T>();
+
+        foreach (var comp in allComponents)
+        {
+            if (comp.name == objectName && comp.gameObject.scene.IsValid())
+                return comp;
+        }
+
+        return null;
+    }
+
 
 }

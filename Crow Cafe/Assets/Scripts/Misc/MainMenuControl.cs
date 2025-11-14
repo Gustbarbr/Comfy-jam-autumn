@@ -12,6 +12,13 @@ public class MainMenuControl : MonoBehaviour
 
     public void NewGame()
     {
+        PlayerPrefs.DeleteKey("Tutorial_Cafe_Shown");
+        PlayerPrefs.DeleteKey("Tutorial_Dorm_Shown");
+
+        PlayerPrefs.DeleteKey("DormDecorations");
+
+        PlayerPrefs.Save();
+
         SceneManager.LoadScene("Cafe");
     }
 
