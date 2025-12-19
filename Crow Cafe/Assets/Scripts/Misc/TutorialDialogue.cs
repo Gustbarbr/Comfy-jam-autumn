@@ -8,6 +8,8 @@ public class TutorialDialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
+    public bool endTutorial = false;
+
     private int index = 0;
 
     public string tutorialKey = "Tutorial_Default";
@@ -66,6 +68,9 @@ public class TutorialDialogue : MonoBehaviour
         }
 
         else
+        {
             gameObject.SetActive(false);
+            endTutorial = true;
+        }
     }
 }

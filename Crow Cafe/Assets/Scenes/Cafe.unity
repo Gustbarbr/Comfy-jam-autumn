@@ -15892,6 +15892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clockText: {fileID: 173842222}
   remainingTime: 150
+  tutorial: {fileID: 1794205151}
 --- !u!1 &475968700
 GameObject:
   m_ObjectHideFlags: 0
@@ -29732,6 +29733,7 @@ MonoBehaviour:
   - It will succed if you follow the instructions on the food menu [TAB].
   - Good luck!
   textSpeed: 0.1
+  endTutorial: 0
   tutorialKey: Tutorial_Cafe_Shown
 --- !u!1 &1799220757
 GameObject:
